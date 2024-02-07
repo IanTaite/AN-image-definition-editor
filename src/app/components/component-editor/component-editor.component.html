@@ -2,18 +2,45 @@
   <div class="header">
     <h2>Component Editor</h2>
     <div class="action-buttons">
+      <p-button
+        icon="pi pi-arrow-up"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this component up'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveEarlier"
+        (click)="moveComponentEarlierButton_Click()"
+      />
+      <p-button
+        icon="pi pi-arrow-down"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this component down'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveLater"
+        (click)="moveComponentLaterButton_Click()"
+      />
+      <p-button
+        icon="pi pi-times"
+        size="small"
+        [pTooltip]="'Delete this component'"
+        tooltipPosition="bottom"
+        (click)="deleteComponentButton_Click()"
+      />
     </div>
   </div>
 
   <div class="property-container">
     <div class="property-item">
-      <span>Id</span><span>{{ model.id }}</span>
+      <span>Id</span><span>{{ componentModel.id }}</span>
     </div>
     <div class="property-item">
-      <span>Name</span><span>"{{ model.name }}"</span>
+      <span>Name</span><span>"{{ componentModel.name }}"</span>
     </div>
     <div class="property-item">
-      <span>Type</span><span>{{ model.type }}</span>
+      <span>Type</span><span>{{ componentModel.type }}</span>
     </div>
   </div>
 </div>

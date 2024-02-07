@@ -3,7 +3,11 @@ import { ImageDefinition, ImageLayer, ImageComponent } from './data-model';
 export const DATA: ImageDefinition = {
   id: '1',
   name: 'Definition 1',
-  layers: [
+  clientId: 'Woof',
+  imageSizeTemplateId: '1',
+  outputImageType: 1,
+  variantKeys: [],
+  imageLayers: [
     {
       id: '1',
       name: 'First Layer',

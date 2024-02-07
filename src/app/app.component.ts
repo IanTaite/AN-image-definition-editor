@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EditorComponent } from './components/editor/editor.component';
-import { DATA } from './data';
-import { JsonPipe } from '@angular/common';
+import { DocumentEditorComponent } from './components/document-editor/document-editor.component';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [JsonPipe, EditorComponent],
+  imports: [JsonPipe, AsyncPipe, DocumentEditorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  data = DATA;
+  private dataService = inject(DataService);
+  data$ = this.dataService.data$;
 }

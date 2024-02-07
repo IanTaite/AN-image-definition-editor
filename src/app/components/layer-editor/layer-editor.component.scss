@@ -19,6 +19,7 @@
 .action-buttons {
   display: flex;
   gap: 0.5rem;
+  justify-content: end;
 }
 
 .property-container {
@@ -32,19 +33,16 @@
 }
 
 .children-container {
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 0;
 }
 
 .child-container {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: space-between;
-  border: 2px solid lightcoral;
   padding: 1rem;
+  border: 2px solid #a3a3a3;
+  border-radius: .33rem;
 }
 
 .child-editor {

@@ -1,8 +1,10 @@
+@if (data$|async; as data) {
 <div class="container">
   <div class="left">
-    <app-editor [model]="data" />
+    <app-document-editor [model]="data" />
   </div>
   <div class="right">
     <pre><code>{{data|json}}</code></pre>
   </div>
 </div>
+}

@@ -1,0 +1,54 @@
+<div class="editor">
+  <div class="header">
+    <h2>Image Editor</h2>
+    <div class="action-button-group">
+      <p-button
+        icon="pi pi-plus"
+        size="small"
+        [pTooltip]="'Add a new layer'"
+        tooltipPosition="bottom"
+        (click)="addNewLayerButton_Click()"
+      />
+      <!-- <button pButton [pTooltip]="'This is a tooltip!'" tooltipPosition="bottom"><span class="pi pi-plus"></span></button> -->
+    </div>
+  </div>
+  <div class="property-container">
+    <div class="property-item">
+      <span>Id</span><span>{{ model.id }}</span>
+    </div>
+    <div class="property-item">
+      <label for="name">Name</label>
+      <input pInputText [(ngModel)]="model.name" />
+    </div>
+  </div>
+  <div class="children-container">
+    <ng-container
+      *ngFor="
+        let layer of model.imageLayers;
+        index as i;
+        first as isFirst;
+        last as isLast
+      "
+    >
+      <div class="child-container">
+        <div>
+          <app-layer-editor
+            [model]="layer"
+            [canMoveEarlier]="!isFirst"
+            [canMoveLater]="!isLast"
+          />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="action-button-container">
+    <div class="action-button-group">
+      <p-button label="Save" severity="primary" (click)="saveButton_Click()" />
+      <p-button
+        label="Cancel"
+        severity="secondary"
+        (click)="cancelButton_Click()"
+      />
+    </div>
+  </div>
+</div>

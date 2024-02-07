@@ -14,5 +14,9 @@ export interface ImageLayer {
 export interface ImageDefinition {
   id: string;
   name: string;
-  layers: ImageLayer[];
+  clientId: string;
+  imageSizeTemplateId: string;
+  outputImageType: number;
+  variantKeys: string[];
+  imageLayers: ImageLayer[];
 }
