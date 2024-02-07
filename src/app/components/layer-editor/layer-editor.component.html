@@ -1,0 +1,31 @@
+<div class="layer-editor">
+  <div class="header">
+    <h2>Layer Editor</h2>
+    <div class="action-buttons">
+      <button (click)="addNewComponentButton_Click()">Add Component</button>
+    </div>
+  </div>
+  <div class="property-container">
+    <div class="property-item">
+      <span>Id</span><span>{{ model.id }}</span>
+    </div>
+    <div class="property-item">
+      <span>Name</span><span>"{{ model.name }}"</span>
+    </div>
+    <div class="property-item">
+      <span>Position</span><span>{{ model.position }}</span>
+    </div>
+  </div>
+  <div class="children-container">
+    @for (component of model.components; track component.id) {
+    <div class="child-container">
+      <div class="child-editor">
+        <app-component-editor [model]="component" />
+      </div>
+      <div class="action-buttons">
+        <button (click)="removeComponentButton_Click(component)">Remove Component</button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.editor {
+  padding: 1rem;
+  border: 2px solid purple;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+  background-color: #efefef;
+  h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.action-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: .5rem;
+}
+
+.property-container {
+  width: 400px;
+}
+
+.property-item {
+  display: flex;
+  justify-content: space-between;
+  padding: .25rem;
+}
+
+.children-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.child-container {
+  border: 2px solid lightskyblue;
+}
