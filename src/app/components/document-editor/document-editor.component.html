@@ -1,15 +1,18 @@
 <div class="editor">
   <div class="header">
-    <h2>Image Editor</h2>
+    <h2>Document Type - {{ model.name }}</h2>
     <div class="action-button-group">
-      <p-button
+      <p-menu #menu [model]="layerChoices" [popup]="true" />
+      <button
+        pButton
+        type="button"
         icon="pi pi-plus"
+        label="Layer"
         size="small"
         [pTooltip]="'Add a new layer'"
         tooltipPosition="bottom"
-        (click)="addNewLayerButton_Click()"
-      />
-      <!-- <button pButton [pTooltip]="'This is a tooltip!'" tooltipPosition="bottom"><span class="pi pi-plus"></span></button> -->
+        (click)="menu.toggle($event)"
+      ></button>
     </div>
   </div>
   <div class="property-container">
@@ -32,11 +35,22 @@
     >
       <div class="child-container">
         <div>
-          <app-layer-editor
-            [model]="layer"
-            [canMoveEarlier]="!isFirst"
-            [canMoveLater]="!isLast"
-          />
+          @switch(layer.layerType) {
+            @case (1) {
+              <app-static-layer-editor
+                [model]="layer"
+                [canMoveEarlier]="!isFirst"
+                [canMoveLater]="!isLast"
+              />
+            }
+            @case (2) {
+              <app-text-layer-editor
+                [model]="layer"
+                [canMoveEarlier]="!isFirst"
+                [canMoveLater]="!isLast"
+              />
+            }
+          }
         </div>
       </div>
     </ng-container>

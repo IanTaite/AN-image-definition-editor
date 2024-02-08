@@ -1,4 +1,4 @@
-export interface IDataStoragKey {
+export interface IDataStorageKey {
   id: string;
   partition: string;
   usePartitionKey: boolean

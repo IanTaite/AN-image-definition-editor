@@ -1,6 +1,6 @@
 <div class="layer-editor">
   <div class="header">
-    <h2>Layer Editor</h2>
+    <h2>Text Layer</h2>
     <div class="action-buttons">
       <p-button
         icon="pi pi-arrow-up"
@@ -32,15 +32,9 @@
     </div>
   </div>
   <div class="property-container">
-    <div class="property-item">
+    <!-- <div class="property-item">
       <span>Id</span><span>{{ model.id }}</span>
-    </div>
-    <div class="property-item">
-      <span>Name</span><span>"{{ model.name }}"</span>
-    </div>
-    <div class="property-item">
-      <span>Position</span><span>{{ model.position }}</span>
-    </div>
+    </div> -->
   </div>
   <div class="children-container">
     <ng-container
@@ -53,15 +47,19 @@
     >
       <div class="child-container">
         <div class="child-editor">
-          <app-component-editor
-            [layerModel]="model"
-            [componentModel]="component"
-            [canMoveEarlier]="!isFirst"
-            [canMoveLater]="!isLast"
-            (moveEarlier)="onMoveComponentEarlier($event)"
-            (moveLater)="onMoveComponentLater($event)"
-            (deleteComponent)="onDeleteComponent($event)"
-          />
+          @switch(component.componentType) {
+            @case (2) {
+              <app-directsmile-component-editor
+                [layerModel]="model"
+                [componentModel]="component"
+                [canMoveEarlier]="!isFirst"
+                [canMoveLater]="!isLast"
+                (moveEarlier)="onMoveComponentEarlier($event)"
+                (moveLater)="onMoveComponentLater($event)"
+                (deleteComponent)="onDeleteComponent($event)"
+              />
+            }
+          }
         </div>
         <div class="action-buttons"></div>
       </div>

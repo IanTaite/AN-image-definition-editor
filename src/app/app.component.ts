@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { DocumentEditorComponent } from './components/document-editor/document-editor.component';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { DataService } from './services/data.service';
@@ -14,4 +13,5 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   private dataService = inject(DataService);
   data$ = this.dataService.data$;
+  dataErrors$ = this.dataService.dataErrors$;
 }

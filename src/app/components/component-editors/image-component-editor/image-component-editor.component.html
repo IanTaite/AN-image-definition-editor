@@ -1,0 +1,37 @@
+<div class="component-editor">
+  <div class="header">
+    <h2>Image Component Editor</h2>
+    <div class="action-buttons">
+      <p-button
+        icon="pi pi-arrow-up"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this component up'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveEarlier"
+        (click)="moveComponentEarlierButton_Click()"
+      />
+      <p-button
+        icon="pi pi-arrow-down"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this component down'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveLater"
+        (click)="moveComponentLaterButton_Click()"
+      />
+      <p-button
+        icon="pi pi-times"
+        size="small"
+        [pTooltip]="'Delete this component'"
+        tooltipPosition="bottom"
+        (click)="deleteComponentButton_Click()"
+      />
+    </div>
+  </div>
+
+  <div class="property-container">
+  </div>
+</div>

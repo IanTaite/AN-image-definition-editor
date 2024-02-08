@@ -1,0 +1,50 @@
+.layer-editor {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #efefef;
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.property-container {
+  width: 400px;
+}
+
+.property-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+}
+
+.children-container {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.child-container {
+  padding: 1rem;
+  border: 2px solid #a3a3a3;
+  border-radius: .33rem;
+}
+
+.child-editor {
+  flex-grow: 1;
+}

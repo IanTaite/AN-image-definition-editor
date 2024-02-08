@@ -1,38 +1,34 @@
 import { Component, Input, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { ComponentEditorComponent } from '../component-editor/component-editor.component';
-import { ImageComponent, ImageLayer } from '../../data-model';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { ImageComponentEditorComponent } from '../../component-editors/image-component-editor/image-component-editor.component';
+import { IComponent, IImageLayer } from '../../../image-definitions';
 
 @Component({
-  selector: 'app-layer-editor',
+  selector: 'app-static-layer-editor',
   standalone: true,
   imports: [
     NgFor,
     ButtonModule,
     InputTextModule,
     TooltipModule,
-    ComponentEditorComponent,
+    ImageComponentEditorComponent,
   ],
-  templateUrl: './layer-editor.component.html',
-  styleUrl: './layer-editor.component.scss',
+  templateUrl: './static-layer-editor.component.html',
+  styleUrl: './static-layer-editor.component.scss'
 })
-export class LayerEditorComponent {
-  @Input({ required: true }) model!: ImageLayer;
+export class StaticLayerEditorComponent {
+  @Input({ required: true }) model!: IImageLayer;
   @Input({ required: true }) canMoveEarlier!: boolean;
   @Input({ required: true }) canMoveLater!: boolean;
 
   dataService = inject(DataService);
 
   addNewComponentButton_Click() {
-    this.dataService.addNewComponentToLayer(this.model, {
-      id: Date.now().toString(),
-      name: 'New Component',
-      type: 1,
-    });
+    this.dataService.addComponent(this.model, 1);
   }
 
   moveLayerEarlierButton_Click() {
@@ -43,18 +39,18 @@ export class LayerEditorComponent {
     this.dataService.moveLayerLater(this.model);
   }
   deleteLayerButton_Click() {
-    this.dataService.deleteLayer(this.model);
+    this.dataService.removeLayer(this.model);
   }
 
-  onMoveComponentEarlier(component: ImageComponent) {
+  onMoveComponentEarlier(component: IComponent) {
     this.dataService.moveComponentEarlier(this.model, component);
   }
 
-  onMoveComponentLater(component: ImageComponent) {
+  onMoveComponentLater(component: IComponent) {
     this.dataService.moveComponentLater(this.model, component);
   }
 
-  onDeleteComponent(component: ImageComponent) {
-    this.dataService.removeComponentFromLayer(this.model, component);
+  onDeleteComponent(component: IComponent) {
+    this.dataService.removeComponent(this.model, component);
   }
 }

@@ -7,4 +7,6 @@
     <pre><code>{{data|json}}</code></pre>
   </div>
 </div>
+} @if (dataErrors$|async; as errors) {
+<pre><code>{{errors|json}}</code></pre>
 }

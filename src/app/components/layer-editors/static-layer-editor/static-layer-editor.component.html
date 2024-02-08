@@ -1,0 +1,75 @@
+<div class="layer-editor">
+  <div class="header">
+    <h2>Static Layer</h2>
+    <div class="action-buttons">
+      <p-button
+        icon="pi pi-arrow-up"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this layer up'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveEarlier"
+        (click)="moveLayerEarlierButton_Click()"
+      />
+      <p-button
+        icon="pi pi-arrow-down"
+        size="small"
+        severity="secondary"
+        [pTooltip]="'Move this layer down'"
+        tooltipPosition="bottom"
+        [outlined]="true"
+        [disabled]="!canMoveLater"
+        (click)="moveLayerLaterButton_Click()"
+      />
+      <p-button
+        icon="pi pi-times"
+        size="small"
+        [pTooltip]="'Delete this layer'"
+        tooltipPosition="bottom"
+        (click)="deleteLayerButton_Click()"
+      />
+    </div>
+  </div>
+  <div class="property-container">
+    <!-- <div class="property-item">
+      <span>Id</span><span>{{ model.id }}</span>
+    </div> -->
+  </div>
+  <div class="children-container">
+    <ng-container
+      *ngFor="
+        let component of model.components;
+        index as i;
+        first as isFirst;
+        last as isLast
+      "
+    >
+      <div class="child-container">
+        <div class="child-editor">
+          @switch (component.componentType) {
+            @case (1) {
+              <app-image-component-editor
+                [layerModel]="model"
+                [componentModel]="component"
+                [canMoveEarlier]="!isFirst"
+                [canMoveLater]="!isLast"
+                (moveEarlier)="onMoveComponentEarlier($event)"
+                (moveLater)="onMoveComponentLater($event)"
+                (deleteComponent)="onDeleteComponent($event)"
+              />
+            }
+          }
+        </div>
+        <div class="action-buttons"></div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="action-buttons">
+    <p-button
+      label="Add Component"
+      size="small"
+      (click)="addNewComponentButton_Click()"
+    />
+  </div>
+</div>

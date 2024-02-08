@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #efefef;
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.property-container {
+  width: 400px;
+}
+
+.property-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+}
+
+.children-container {
+  margin-top: 1rem;
+}

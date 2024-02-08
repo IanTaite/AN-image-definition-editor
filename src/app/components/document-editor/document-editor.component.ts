@@ -1,19 +1,19 @@
 import {
   Component,
   Input,
-  OnChanges,
-  SimpleChanges,
   inject,
 } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayerEditorComponent } from '../layer-editor/layer-editor.component';
-import { ImageDefinition, ImageLayer } from '../../data-model';
-import { DataService } from '../../services/data.service';
+import { StaticLayerEditorComponent } from '../layer-editors/static-layer-editor/static-layer-editor.component';
+import { TextLayerEditorComponent } from '../layer-editors/text-layer-editor/text-layer-editor.component';
+import { DataService, LayerType } from '../../services/data.service';
 import { AsyncPipe } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { MenuModule } from 'primeng/menu';
+import { IImageDefinition, IImageLayer } from '../../image-definitions';
 
 @Component({
   selector: 'app-document-editor',
@@ -24,31 +24,33 @@ import { TooltipModule } from 'primeng/tooltip';
     FormsModule,
     ButtonModule,
     InputTextModule,
+    MenuModule,
     TooltipModule,
-    LayerEditorComponent,
+    StaticLayerEditorComponent,
+    TextLayerEditorComponent
   ],
   templateUrl: './document-editor.component.html',
   styleUrl: './document-editor.component.scss',
 })
-export class DocumentEditorComponent implements OnChanges {
-  @Input({ required: true }) model!: ImageDefinition;
+export class DocumentEditorComponent {
+  @Input({ required: true }) model!: IImageDefinition;
   private dataService = inject(DataService);
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('EditorComponent.ngOnChanges', changes);
-  }
+  layerChoices = [
+    {
+      label: 'Static',
+      icon: 'pi pi-image',
+      command: () => this.dataService.addLayer(LayerType.Static),
+    },
+    {
+      label: 'Text',
+      icon: 'pi pi-image',
+      command: () => this.dataService.addLayer(LayerType.Text),
+    }
+  ];
 
-  orderedLayers(layers: ImageLayer[]) {
-    return layers.sort((a, b) => a.position - b.position);
-  }
-
-  addNewLayerButton_Click() {
-    this.dataService.addNewLayer({
-      id: Date.now().toString(),
-      name: 'New Layer',
-      position: 0,
-      components: [],
-    });
+  orderedLayers(layers: IImageLayer[]) {
+    return layers.sort((a, b) => a.layerPosition - b.layerPosition);
   }
 
   saveButton_Click() {
