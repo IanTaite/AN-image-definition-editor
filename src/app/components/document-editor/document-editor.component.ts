@@ -5,8 +5,8 @@ import {
 } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { StaticLayerEditorComponent } from '../layer-editors/static-layer-editor/static-layer-editor.component';
-import { TextLayerEditorComponent } from '../layer-editors/text-layer-editor/text-layer-editor.component';
+import { StaticLayerEditorComponent } from '../static-layer-editor/static-layer-editor.component';
+import { TextLayerEditorComponent } from '../text-layer-editor/text-layer-editor.component';
 import { DataService, LayerType } from '../../services/data.service';
 import { AsyncPipe } from '@angular/common';
 import { ButtonModule } from 'primeng/button';

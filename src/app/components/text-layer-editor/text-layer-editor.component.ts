@@ -1,11 +1,11 @@
 import { Component, Input, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { DataService } from '../../../services/data.service';
+import { DataService } from '../../services/data.service';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
-import { DirectSmileComponentEditorComponent } from '../../component-editors/directsmile-component-editor/directsmile-component-editor.component';
-import { IComponent, IImageLayer } from '../../../image-definitions';
+import { DirectSmileComponentEditorComponent } from '../directsmile-component-editor/directsmile-component-editor.component';
+import { IComponent, IImageLayer } from '../../image-definitions';
 
 @Component({
   selector: 'app-text-layer-editor',

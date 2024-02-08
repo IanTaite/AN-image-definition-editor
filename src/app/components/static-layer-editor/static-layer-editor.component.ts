@@ -1,11 +1,11 @@
 import { Component, Input, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { DataService } from '../../../services/data.service';
+import { DataService } from '../../services/data.service';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
-import { ImageComponentEditorComponent } from '../../component-editors/image-component-editor/image-component-editor.component';
-import { IComponent, IImageLayer } from '../../../image-definitions';
+import { ImageComponentEditorComponent } from '../image-component-editor/image-component-editor.component';
+import { IComponent, IImageLayer } from '../../image-definitions';
 
 @Component({
   selector: 'app-static-layer-editor',
