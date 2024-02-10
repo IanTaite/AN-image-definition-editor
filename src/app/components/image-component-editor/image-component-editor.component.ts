@@ -2,12 +2,13 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
 import { IComponent, IImageLayer } from '../../image-definitions';
 
 @Component({
   selector: 'app-image-component-editor',
   standalone: true,
-  imports: [ButtonModule, InputTextModule, TooltipModule],
+  imports: [ButtonModule, InputTextModule, TooltipModule, FileUploadModule],
   templateUrl: './image-component-editor.component.html',
   styleUrl: './image-component-editor.component.scss',
 })
@@ -30,5 +31,10 @@ export class ImageComponentEditorComponent {
 
   deleteComponentButton_Click() {
     this.deleteComponent.emit(this.componentModel);
+  }
+
+  onUpload(event: FileUploadEvent) {
+    console.log(event);
+    throw new Error('Method not implemented.');
   }
 }

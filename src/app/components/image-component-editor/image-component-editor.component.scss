@@ -20,14 +20,19 @@
 
 .property-container {
   width: 400px;
+  margin-bottom: 1rem;
 }
 
 .property-item {
   display: flex;
   justify-content: space-between;
   padding: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .children-container {
   margin-top: 1rem;
+}
+
+.upload-container {
 }

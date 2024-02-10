@@ -32,6 +32,17 @@
     </div>
   </div>
 
-  <div class="property-container">
+  <div class="property-container"></div>
+
+  <div class="upload-container">
+    <p-fileUpload
+      mode="basic"
+      chooseLabel="Choose"
+      name="file"
+      url="http://localhost:3000/upload"
+      accept="image/*"
+      [maxFileSize]="1000000"
+      (onUpload)="onUpload($event)"
+    ></p-fileUpload>
   </div>
 </div>
