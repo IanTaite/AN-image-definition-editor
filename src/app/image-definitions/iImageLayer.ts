@@ -1,4 +1,4 @@
-import { IComponent } from './iComponent';
+import { IComponent } from './IComponent';
 import { ITextDataSet } from './iTextDataSet';
 import { IDefaultImage } from './iDefaultImage';
 export interface IImageLayer {

@@ -1,4 +1,4 @@
-export { IComponent } from './iComponent';
+export { IComponent } from './IComponent';
 export { IDataStorageKey } from './iDataStorageKey';
 export { IDefaultImage } from './iDefaultImage';
 export { IImageDefinition } from './iImageDefinition';
