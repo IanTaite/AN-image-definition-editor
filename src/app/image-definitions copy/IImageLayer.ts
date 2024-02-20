@@ -1,6 +1,6 @@
 import { IComponent } from './IComponent';
-import { ITextDataSet } from './iTextDataSet';
-import { IDefaultImage } from './iDefaultImage';
+import { ITextDataSet } from './ITextDataSet';
+import { IDefaultImage } from './IDefaultImage';
 export interface IImageLayer {
 	layerType: number;
 	useTransformKeys: boolean;

@@ -1,4 +1,4 @@
-import { IImageLayer } from './iImageLayer';
+import { IImageLayer } from './IImageLayer';
 
 export interface IImageDefinition {
 	id: string;

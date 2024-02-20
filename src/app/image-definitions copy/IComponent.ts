@@ -1,6 +1,6 @@
-import { IImageDefinitionPath } from './iImageDefinitionPath';
-import { IPosition } from './iPosition';
-import { ISet } from './iSet';
+import { IImageDefinitionPath } from './IImageDefinitionPath';
+import { IPosition } from './IPosition';
+import { ISet } from './ISet';
 export interface IComponent {
 	paths?: IImageDefinitionPath[] | null;
 	componentType: number;
