@@ -1,7 +1,7 @@
 {
-  "id": "shit-show",
-  "name": "Shit Show",
-  "clientId": "clientname",
+  "id": "example-document",
+  "name": "Example Document",
+  "clientId": "Client001",
   "imageSizeTemplateId": "image-template id",
   "outputImageType": 2,
   "variantKeys": [],
@@ -79,7 +79,7 @@
   "deleted": false,
   "dataStorageKey": {
     "id": "clientname",
-    "partition": "shit-show",
+    "partition": "Client001",
     "usePartitionKey": true
   },
   "etag": "\u002201008851-0000-1100-0000-65c4b31e0000\u0022"

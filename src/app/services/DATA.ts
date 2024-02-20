@@ -1,6 +1,6 @@
 export const SAMPLE_DATA = {
-  id: 'shit-show',
-  name: 'Shit Show',
+  id: '001',
+  name: 'Test Document',
   clientId: 'clientname',
   imageSizeTemplateId: 'image-template id',
   outputImageType: 2,
@@ -77,7 +77,7 @@ export const SAMPLE_DATA = {
   deleted: false,
   dataStorageKey: {
     id: 'clientname',
-    partition: 'shit-show',
+    partition: 'Client001',
     usePartitionKey: true,
   },
   etag: '\u00220100d59c-0000-1100-0000-65c4eeba0000\u0022',

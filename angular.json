@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shit-show-editor": {
+    "image-editor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shit-show-editor",
+            "outputPath": "dist/image-editor",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "shit-show-editor:build:production"
+              "buildTarget": "image-editor:build:production"
             },
             "development": {
-              "buildTarget": "shit-show-editor:build:development"
+              "buildTarget": "image-editor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "shit-show-editor:build"
+            "buildTarget": "image-editor:build"
           }
         },
         "test": {
