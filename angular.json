@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "image-definition-editor": {
+    "tns-image-definition-editor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/image-definition-editor",
+            "outputPath": "dist/tns-image-definition-editor",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "image-definition-editor:build:production"
+              "buildTarget": "tns-image-definition-editor:build:production"
             },
             "development": {
-              "buildTarget": "image-definition-editor:build:development"
+              "buildTarget": "tns-image-definition-editor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "image-definition-editor:build"
+            "buildTarget": "tns-image-definition-editor:build"
           }
         },
         "test": {
