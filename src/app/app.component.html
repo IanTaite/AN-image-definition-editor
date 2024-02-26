@@ -1,12 +1,17 @@
+<h1>Image Editor</h1>
 @if (data$|async; as data) {
-<div class="container">
-  <div class="left">
-    <app-document-editor [model]="data" />
-  </div>
-  <div class="right">
-    <pre><code>{{data|json}}</code></pre>
-  </div>
-</div>
-} @if (dataErrors$|async; as errors) {
-<pre><code>{{errors|json}}</code></pre>
+  @if (data.error) {
+    <p>An error occurred fetching data: {{ data.error }}</p>
+  } @else if (data.model) {
+    <div class="container">
+      <div class="left">
+        <app-document-editor [model]="data.model" />
+      </div>
+      <div class="right">
+        <pre><code>{{data.model|json}}</code></pre>
+      </div>
+    </div>
+  }
+} @else {
+  <p><span class="pi pi-spinner"></span><span> Waiting for data...</span></p>
 }

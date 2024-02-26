@@ -1,18 +1,18 @@
 <div class="editor">
   <div class="header">
-    <h2>Image Definition - {{ model.name }}</h2>
+    <h2>AN Image Definition - {{ model.name }}</h2>
     <div class="action-button-group">
-      <p-menu #menu [model]="layerChoices" [popup]="true" />
-      <button
-        pButton
+      <p-menu #menu [model]="actionMenuConfig" [popup]="true" />
+      <p-button
         type="button"
-        icon="pi pi-plus"
-        label="Layer"
+        icon="pi pi-ellipsis-v"
         size="small"
-        [pTooltip]="'Add a new layer'"
-        tooltipPosition="bottom"
+        [text]="true"
+        [rounded]="true"
+        [pTooltip]="'Action Menu'"
+        tooltipPosition="top"
         (click)="menu.toggle($event)"
-      ></button>
+      ></p-button>
     </div>
   </div>
   <div class="property-container">

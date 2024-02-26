@@ -1,34 +1,17 @@
 <div class="layer-editor">
   <div class="header">
-    <h2>Static Layer</h2>
+    <h2>Static Layer {{ model.id }}</h2>
     <div class="action-buttons">
+      <p-menu #menu [model]="activeActionMenuConfig" [popup]="true" />
       <p-button
-        icon="pi pi-arrow-up"
+        type="button"
+        icon="pi pi-ellipsis-v"
         size="small"
-        severity="secondary"
-        [pTooltip]="'Move this layer up'"
-        tooltipPosition="bottom"
-        [outlined]="true"
-        [disabled]="!canMoveEarlier"
-        (click)="moveLayerEarlierButton_Click()"
-      />
-      <p-button
-        icon="pi pi-arrow-down"
-        size="small"
-        severity="secondary"
-        [pTooltip]="'Move this layer down'"
-        tooltipPosition="bottom"
-        [outlined]="true"
-        [disabled]="!canMoveLater"
-        (click)="moveLayerLaterButton_Click()"
-      />
-      <p-button
-        icon="pi pi-times"
-        size="small"
-        [pTooltip]="'Delete this layer'"
-        tooltipPosition="bottom"
-        (click)="deleteLayerButton_Click()"
-      />
+        [text]="true"
+        [pTooltip]="'Action Menu'"
+        tooltipPosition="top"
+        (click)="menu.toggle($event)"
+      ></p-button>
     </div>
   </div>
   <div class="property-container">

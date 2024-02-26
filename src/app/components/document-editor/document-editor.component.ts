@@ -36,16 +36,21 @@ export class DocumentEditorComponent {
   @Input({ required: true }) model!: IImageDefinition;
   private dataService = inject(DataService);
 
-  layerChoices = [
+  actionMenuConfig = [
     {
-      label: 'Static',
-      icon: 'pi pi-image',
-      command: () => this.dataService.addLayer(LayerType.Static),
-    },
-    {
-      label: 'Text',
-      icon: 'pi pi-image',
-      command: () => this.dataService.addLayer(LayerType.Text),
+      label: 'Add a Layer',
+      items: [
+        {
+          label: 'Static',
+          icon: 'pi pi-plus',
+          command: () => this.dataService.addLayer(LayerType.Static),
+        },
+        {
+          label: 'Text',
+          icon: 'pi pi-plus',
+          command: () => this.dataService.addLayer(LayerType.Text),
+        }
+      ]
     }
   ];
 

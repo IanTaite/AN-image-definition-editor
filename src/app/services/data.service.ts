@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, catchError, of, shareReplay, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Subject,
+  catchError,
+  of,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { SAMPLE_DATA } from './DATA';
-import { IImageLayer, IComponent, ITextDataSet, IImageDefinition } from '../image-definitions';
+import {
+  IImageLayer,
+  IComponent,
+  ITextDataSet,
+  IImageDefinition,
+} from '../image-definitions';
 
 export enum LayerType {
   Static = 1,
-  Text = 2
+  Text = 2,
 }
 
 export enum ComponentType {
@@ -19,11 +32,18 @@ export enum ComponentType {
 export class DataService {
   private model: IImageDefinition = SAMPLE_DATA;
   private dataSubject = new BehaviorSubject<number>(0);
-  data$ = this.dataSubject.pipe(switchMap(() => {
-    console.log('DataService.data$', this.model);
-    return of(this.model);
-  }));
+  data$ = this.dataSubject.pipe(
+    switchMap(() => {
+      console.log('DataService.data$', this.model);
+      return of(this.model);
+    })
+  );
   dataErrors$ = this.data$.pipe(catchError((err) => of(err)));
+
+  layerTypesToComponentTypesMap = {
+    Static: [ComponentType.Image],
+    Text: [ComponentType.DirectSmile],
+  };
 
   moveComponentEarlier(layer: IImageLayer, component: IComponent) {
     const index = layer.components.findIndex((c) => c === component);
@@ -56,17 +76,23 @@ export class DataService {
   }
 
   addLayer(layerType: LayerType) {
-    const highestLayerPosition = this.model.imageLayers.reduce((highestPosition, layer) => {
-      return highestPosition > layer.layerPosition ? highestPosition : layer.layerPosition;
-    }, -1);
+    const highestLayerPosition = this.model.imageLayers.reduce(
+      (highestPosition, layer) => {
+        return highestPosition > layer.layerPosition
+          ? highestPosition
+          : layer.layerPosition;
+      },
+      -1
+    );
     const layer: IImageLayer = {
+      id: this.createId(),
       layerType,
       useTransformKeys: false,
       layerPosition: highestLayerPosition + 1,
       components: [],
       textDataSet: null,
       defaultImage: null,
-      useVariants: false
+      useVariants: false,
     };
     this.model.imageLayers.push(layer);
   }
@@ -79,6 +105,7 @@ export class DataService {
 
   addComponent(layer: IImageLayer, componentType: ComponentType) {
     const component: IComponent = {
+      id: this.createId(),
       componentType,
       position: {
         x: 0,
@@ -101,7 +128,14 @@ export class DataService {
 
   private resequenceLayers() {
     this.model.imageLayers.forEach((l, i) => {
-        l.layerPosition = i;
+      l.layerPosition = i;
     });
+  }
+
+  private createId(minVal = 1000000, maxVal = 2000000) {
+    const min = Math.ceil(minVal);
+    const max = Math.floor(maxVal);
+    const result = Math.floor(Math.random() * (max - min + 1)) + min;
+    return result.toString();
   }
 }
