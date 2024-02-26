@@ -20,14 +20,7 @@
     </div> -->
   </div>
   <div class="children-container">
-    <ng-container
-      *ngFor="
-        let component of model.components;
-        index as i;
-        first as isFirst;
-        last as isLast
-      "
-    >
+    @for (component of model.components; track component.id; let i = $index, isFirst = $first, isLast = $last) {
       <div class="child-container">
         <div class="child-editor">
           @switch (component.componentType) {
@@ -46,7 +39,7 @@
         </div>
         <div class="action-buttons"></div>
       </div>
-    </ng-container>
+    }
   </div>
   <div class="action-buttons">
     <p-button

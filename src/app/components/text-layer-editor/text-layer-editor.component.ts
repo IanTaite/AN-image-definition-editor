@@ -5,7 +5,6 @@ import {
   SimpleChanges,
   inject,
 } from '@angular/core';
-import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { ButtonModule } from 'primeng/button';
@@ -19,7 +18,6 @@ import { IComponent, IImageLayer } from '../../image-definitions';
   selector: 'app-text-layer-editor',
   standalone: true,
   imports: [
-    NgFor,
     FormsModule,
     ButtonModule,
     MenuModule,
