@@ -36,7 +36,7 @@ export class DataService {
     switchMap(() => {
       console.log('DataService.data$', this.model);
       return of(this.model);
-    })
+    }),
   );
   dataErrors$ = this.data$.pipe(catchError((err) => of(err)));
 
@@ -82,7 +82,7 @@ export class DataService {
           ? highestPosition
           : layer.layerPosition;
       },
-      -1
+      -1,
     );
     const layer: IImageLayer = {
       id: this.createId(),

@@ -14,8 +14,9 @@ import { IImageDefinition } from './image-definitions';
 })
 export class AppComponent {
   private dataService = inject(DataService);
-  data$: Observable<{ model: IImageDefinition|null, error: string|null}> = this.dataService.data$.pipe(
-    switchMap(data => of({ model: data, error: null })),
-    catchError((err) => of({ model: null, error: err }))
-  );
+  data$: Observable<{ model: IImageDefinition | null; error: string | null }> =
+    this.dataService.data$.pipe(
+      switchMap((data) => of({ model: data, error: null })),
+      catchError((err) => of({ model: null, error: err })),
+    );
 }

@@ -6,5 +6,9 @@
   grid-template-areas: "left right";
 }
 
-.left { grid-area: left; }
-.right { grid-area: right; }
+.left {
+  grid-area: left;
+}
+.right {
+  grid-area: right;
+}

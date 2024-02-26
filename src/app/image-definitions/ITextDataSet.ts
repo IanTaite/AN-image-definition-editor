@@ -1,4 +1,3 @@
 export interface ITextDataSet {
-	name: string;
+  name: string;
 }
-

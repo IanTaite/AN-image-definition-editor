@@ -1,5 +1,4 @@
 import { IImageDefinitionPath } from './IImageDefinitionPath';
 export interface IDefaultImage {
-	files: IImageDefinitionPath[];
+  files: IImageDefinitionPath[];
 }
-

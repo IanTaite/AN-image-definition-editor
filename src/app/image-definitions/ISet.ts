@@ -1,5 +1,4 @@
 export interface ISet {
-	setAccount: string;
-	setName: string;
+  setAccount: string;
+  setName: string;
 }
-

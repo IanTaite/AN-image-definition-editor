@@ -1,4 +1,4 @@
-import { IImageDefinition } from "../image-definitions";
+import { IImageDefinition } from '../image-definitions';
 
 export const SAMPLE_DATA: IImageDefinition = {
   id: '001',

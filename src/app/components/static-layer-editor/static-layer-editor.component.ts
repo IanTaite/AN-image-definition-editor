@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
@@ -22,7 +28,7 @@ import { IComponent, IImageLayer } from '../../image-definitions';
     ImageComponentEditorComponent,
   ],
   templateUrl: './static-layer-editor.component.html',
-  styleUrl: './static-layer-editor.component.scss'
+  styleUrl: './static-layer-editor.component.scss',
 })
 export class StaticLayerEditorComponent implements OnChanges {
   @Input({ required: true }) model!: IImageLayer;
@@ -30,41 +36,45 @@ export class StaticLayerEditorComponent implements OnChanges {
   @Input({ required: true }) canMoveLater!: boolean;
 
   dataService = inject(DataService);
-  activeActionMenuConfig: {label: string, items: any[]}[] = [];
+  activeActionMenuConfig: { label: string; items: any[] }[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    const canMoveEarlier = changes['canMoveEarlier'] ? changes['canMoveEarlier'].currentValue : this.canMoveEarlier;
-    const canMoveLater = changes['canMoveLater'] ? changes['canMoveLater'].currentValue : this.canMoveLater;
-    this.activeActionMenuConfig =
-      this.buildActiveActionMenuGroups(canMoveEarlier, canMoveLater);
+    const canMoveEarlier = changes['canMoveEarlier']
+      ? changes['canMoveEarlier'].currentValue
+      : this.canMoveEarlier;
+    const canMoveLater = changes['canMoveLater']
+      ? changes['canMoveLater'].currentValue
+      : this.canMoveLater;
+    this.activeActionMenuConfig = this.buildActiveActionMenuGroups(
+      canMoveEarlier,
+      canMoveLater,
+    );
   }
 
-  private buildActiveActionMenuGroups(canMoveEarlier: boolean, canMoveLater: boolean) {
+  private buildActiveActionMenuGroups(
+    canMoveEarlier: boolean,
+    canMoveLater: boolean,
+  ) {
     if (!canMoveEarlier && !canMoveLater) {
-      return [
-        ...this.actionMenuGroupAddComponents,
-        this.actionMenuGroupDelete
-      ];
-
+      return [...this.actionMenuGroupAddComponents, this.actionMenuGroupDelete];
     } else if (canMoveEarlier && canMoveLater) {
       return [
         this.actionMenuGroupMoveUpAndDown,
         ...this.actionMenuGroupAddComponents,
-        this.actionMenuGroupDelete
+        this.actionMenuGroupDelete,
       ];
-
     } else if (canMoveEarlier && !canMoveLater) {
       return [
         this.actionMenuGroupMoveUpOnly,
         ...this.actionMenuGroupAddComponents,
-        this.actionMenuGroupDelete
+        this.actionMenuGroupDelete,
       ];
-
-    } else { // !canMoveEarlier && canMoveLater
+    } else {
+      // !canMoveEarlier && canMoveLater
       return [
         this.actionMenuGroupMoveDownOnly,
         ...this.actionMenuGroupAddComponents,
-        this.actionMenuGroupDelete
+        this.actionMenuGroupDelete,
       ];
     }
   }
@@ -81,8 +91,8 @@ export class StaticLayerEditorComponent implements OnChanges {
         label: 'Lower',
         icon: 'pi pi-arrow-down',
         command: () => this.moveLayerLater(),
-      }
-    ]
+      },
+    ],
   };
 
   private actionMenuGroupMoveUpOnly = {
@@ -92,8 +102,8 @@ export class StaticLayerEditorComponent implements OnChanges {
         label: 'Higher',
         icon: 'pi pi-arrow-up',
         command: () => this.moveLayerEarlier(),
-      }
-    ]
+      },
+    ],
   };
 
   private actionMenuGroupMoveDownOnly = {
@@ -103,8 +113,8 @@ export class StaticLayerEditorComponent implements OnChanges {
         label: 'Lower',
         icon: 'pi pi-arrow-down',
         command: () => this.moveLayerLater(),
-      }
-    ]
+      },
+    ],
   };
 
   private actionMenuGroupAddComponents = [
@@ -114,10 +124,10 @@ export class StaticLayerEditorComponent implements OnChanges {
         {
           label: 'Static Asset',
           icon: 'pi pi-plus',
-          command: () => this.addNewComponent()
-        }
-      ]
-    }
+          command: () => this.addNewComponent(),
+        },
+      ],
+    },
   ];
 
   private actionMenuGroupDelete = {
@@ -126,9 +136,9 @@ export class StaticLayerEditorComponent implements OnChanges {
       {
         label: 'Delete layer',
         icon: 'pi pi-trash',
-        command: () => this.deleteLayer()
-      }
-    ]
+        command: () => this.deleteLayer(),
+      },
+    ],
   };
 
   private addNewComponent() {

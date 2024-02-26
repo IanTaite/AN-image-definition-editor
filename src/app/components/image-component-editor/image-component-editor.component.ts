@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output, inject, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  inject,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
@@ -28,38 +36,34 @@ export class ImageComponentEditorComponent implements OnChanges {
   @Output() moveLater = new EventEmitter<IComponent>();
   @Output() deleteComponent = new EventEmitter<IComponent>();
 
-  activeActionMenuConfig: {label: string, items: any[]}[] = [];
+  activeActionMenuConfig: { label: string; items: any[] }[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    const canMoveEarlier = changes['canMoveEarlier'] ? changes['canMoveEarlier'].currentValue : this.canMoveEarlier;
-    const canMoveLater = changes['canMoveLater'] ? changes['canMoveLater'].currentValue : this.canMoveLater;
-    this.activeActionMenuConfig =
-      this.buildActiveActionMenuGroups(canMoveEarlier, canMoveLater);
+    const canMoveEarlier = changes['canMoveEarlier']
+      ? changes['canMoveEarlier'].currentValue
+      : this.canMoveEarlier;
+    const canMoveLater = changes['canMoveLater']
+      ? changes['canMoveLater'].currentValue
+      : this.canMoveLater;
+    this.activeActionMenuConfig = this.buildActiveActionMenuGroups(
+      canMoveEarlier,
+      canMoveLater,
+    );
   }
 
-  private buildActiveActionMenuGroups(canMoveEarlier: boolean, canMoveLater: boolean) {
+  private buildActiveActionMenuGroups(
+    canMoveEarlier: boolean,
+    canMoveLater: boolean,
+  ) {
     if (!canMoveEarlier && !canMoveLater) {
-      return [
-        this.actionMenuGroupDelete
-      ];
-
+      return [this.actionMenuGroupDelete];
     } else if (canMoveEarlier && canMoveLater) {
-      return [
-        this.actionMenuGroupMoveUpAndDown,
-        this.actionMenuGroupDelete
-      ];
-
+      return [this.actionMenuGroupMoveUpAndDown, this.actionMenuGroupDelete];
     } else if (canMoveEarlier && !canMoveLater) {
-      return [
-        this.actionMenuGroupMoveUpOnly,
-        this.actionMenuGroupDelete
-      ];
-
-    } else { // !canMoveEarlier && canMoveLater
-      return [
-        this.actionMenuGroupMoveDownOnly,
-        this.actionMenuGroupDelete
-      ];
+      return [this.actionMenuGroupMoveUpOnly, this.actionMenuGroupDelete];
+    } else {
+      // !canMoveEarlier && canMoveLater
+      return [this.actionMenuGroupMoveDownOnly, this.actionMenuGroupDelete];
     }
   }
 
@@ -69,14 +73,14 @@ export class ImageComponentEditorComponent implements OnChanges {
       {
         label: 'Higher',
         icon: 'pi pi-arrow-up',
-        command: () => this.moveEarlier.emit(this.componentModel)
+        command: () => this.moveEarlier.emit(this.componentModel),
       },
       {
         label: 'Lower',
         icon: 'pi pi-arrow-down',
-        command: () => this.moveLater.emit(this.componentModel)
-      }
-    ]
+        command: () => this.moveLater.emit(this.componentModel),
+      },
+    ],
   };
 
   private actionMenuGroupMoveUpOnly = {
@@ -85,9 +89,9 @@ export class ImageComponentEditorComponent implements OnChanges {
       {
         label: 'Higher',
         icon: 'pi pi-arrow-up',
-        command: () => this.moveEarlier.emit(this.componentModel)
-      }
-    ]
+        command: () => this.moveEarlier.emit(this.componentModel),
+      },
+    ],
   };
 
   private actionMenuGroupMoveDownOnly = {
@@ -96,9 +100,9 @@ export class ImageComponentEditorComponent implements OnChanges {
       {
         label: 'Lower',
         icon: 'pi pi-arrow-down',
-        command: () => this.moveLater.emit(this.componentModel)
-      }
-    ]
+        command: () => this.moveLater.emit(this.componentModel),
+      },
+    ],
   };
 
   private actionMenuGroupDelete = {
@@ -107,9 +111,9 @@ export class ImageComponentEditorComponent implements OnChanges {
       {
         label: 'Delete component',
         icon: 'pi pi-trash',
-        command: () => this.deleteComponent.emit(this.componentModel)
-      }
-    ]
+        command: () => this.deleteComponent.emit(this.componentModel),
+      },
+    ],
   };
 
   onUpload(event: FileUploadEvent) {

@@ -1,8 +1,4 @@
-import {
-  Component,
-  Input,
-  inject,
-} from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StaticLayerEditorComponent } from '../static-layer-editor/static-layer-editor.component';
@@ -27,7 +23,7 @@ import { IImageDefinition, IImageLayer } from '../../image-definitions';
     MenuModule,
     TooltipModule,
     StaticLayerEditorComponent,
-    TextLayerEditorComponent
+    TextLayerEditorComponent,
   ],
   templateUrl: './document-editor.component.html',
   styleUrl: './document-editor.component.scss',
@@ -49,9 +45,9 @@ export class DocumentEditorComponent {
           label: 'Text',
           icon: 'pi pi-plus',
           command: () => this.dataService.addLayer(LayerType.Text),
-        }
-      ]
-    }
+        },
+      ],
+    },
   ];
 
   orderedLayers(layers: IImageLayer[]) {

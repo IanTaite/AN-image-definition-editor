@@ -1,5 +1,5 @@
 <h1>Image Editor</h1>
-@if (data$|async; as data) {
+@if (data$ | async; as data) {
   @if (data.error) {
     <p>An error occurred fetching data: {{ data.error }}</p>
   } @else if (data.model) {
